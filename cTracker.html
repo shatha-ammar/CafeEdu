@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Coffee Intake Tracker</title>
+    <link rel="stylesheet" href="MySheet.css">
+    <header>
+        <nav class="navMenu">
+            <img src="logo.jpg" alt="Cafe Edu Logo" class="logo">
+            <a class="websiteName">Cafe Edu</a>
+            <ul class="navMenu">
+                <li><a href="HomePage.html">Home</a></li>
+                <li><a href="AboutUs.html">About Us</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+                <li><a href="Courses.html">Courses</a>
+                    <ul id="submenu">
+                        <li><a href="Coffee101.html">Coffee101</a></li>
+                        <li><a href="BrewingMethods.html">Brewing Methods</a></li>
+                        <li><a href="Espresso.html">Espresso Machine</a></li>
+                    </ul>
+                </li>
+                <li><a href="SuccessfulStories.html">Success Stories</a></li>
+                <li><a href="ResourceLibrary.html">Resource Library</a></li>
+                <li><a href="cTracker.html">Coffee Tracker</a></li>
+            </ul>
+        </nav>
+     </header>
+    <style>
+        .f {
+            max-width: 750px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #F8E8D8;
+            border-radius: 20px;
+            border-top-left-radius: 60px;
+            border-bottom-right-radius: 60px;
+            border: 20px solid #304323; 
+            padding: 40px;
+        }
+        .f p{
+            color: #3B3030;
+            font-size: large;
+            font-weight: bold;
+        }
+        textarea {
+            width: 100%;
+            height: 120px;
+            background-color:#3B3030;
+            color: #F8E8D8;
+            border-radius: 20px;
+            padding: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #304323;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #6e7c64;
+        }
+        .error {
+            color: red;
+            margin-left: 10px;
+            font-size: small;
+        }
+        h2{
+            color: #3B3030;
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="f">
+        <h2 class="h2">Coffee Intake Tracker</h2>
+        <form id="mainForm">
+         <p id="clock"></p>
+            <p>
+                Weight (kg): 
+                <input type="number" id="weight">
+                <span id="sp1" class="error"></span>
+            </p>
+            <p>
+                Height (cm): 
+                <input type="number" id="height">
+                <span id="sp2" class="error"></span>
+            </p>
+            <p>
+                Gender: <input type="radio" name="r1" value="Male">Male</input>
+               <input type="radio" name="r1" value="Female"> Female</input>
+                <span id="sp3" class="error"></span>
+            </p>
+            <p>
+                Activity Level:
+                <input type="checkbox" id="sedentary" name="activityLevel" value="Sedentary"> Sedentary
+                <input type="checkbox" id="moderate" name="activityLevel" value="Moderate"> Moderate
+                <input type="checkbox" id="active" name="activityLevel" value="Active"> Active
+                <span id="sp4" class="error"></span>
+            </p>
+            
+            <p>
+                Daily Cups of Coffee: 
+                <input type="number" id="cups">
+                <span id="sp5" class="error"></span>
+            </p>
+            <p>
+                Coffee Type:
+                <select id="coffeeType">
+                    <option value="">Select Coffee Type</option>
+                    <option value="americano">Americano (240 ml)</option>
+                    <option value="macchiato">Macchiato (30 ml)</option>
+                    <option value="espresso">Espresso (30 ml)</option>
+                    <option value="cappuccino">Cappuccino (240 ml)</option>
+                    <option value="latte">Latte (240 ml)</option>
+                    <option value="mocha">Mocha (240 ml)</option>
+                </select>
+                <span id="sp6" class="error"></span>
+            </p>
+            <p id="demo"></p>
+            <textarea id="txt" readonly></textarea>
+            <br>
+            <button type="button" onclick="calculateResults()">Calculate</button>
+        </form>
+    </div>
+
+    <script>
+        function displayDateTime() {
+            var d = new Date();
+            var date = d.toLocaleDateString();
+            var time = d.toLocaleTimeString();
+            document.getElementById("clock").innerHTML = "Date: " + date + " | Time: " + time;
+        }
+       setInterval(displayDateTime, 1000);
+
+       function calculateResults() {
+    var isValid = true;
+    
+    var weight = document.getElementById("weight");
+    var height = document.getElementById("height");
+    var radios = document.getElementsByName("r1");
+    var activityLevels = document.getElementsByName("activityLevel"); 
+    var cups = document.getElementById("cups");
+    var coffeeType = document.getElementById("coffeeType");
+
+    var genderValue = null;
+    for (var i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+            document.getElementById("demo").innerHTML="<h1>Gender: "+radios[i].value+"</h1>";
+            genderValue = radios[i].value;
+            break;
+        }
+    }
+
+    var isActivityLevelSelected = false;
+    for (var i = 0; i < activityLevels.length; i++) {
+        if (activityLevels[i].checked) {
+            isActivityLevelSelected = true;
+            break;
+        }
+    }
+
+    if (!isActivityLevelSelected) {
+        document.getElementById("sp4").innerHTML = "Please select at least one activity level";
+        isValid = false;
+    } else {
+        document.getElementById("sp4").innerHTML = "";
+    }
+
+    if (weight.value == "" || weight.value <= 0 || weight.value < 40) {
+        document.getElementById("sp1").innerHTML = "Enter a valid weight";
+        isValid = false;
+        weight.style.borderColor = 'red';
+    } else {
+        document.getElementById("sp1").innerHTML = "";
+        weight.style.borderColor = 'green';
+    }
+
+    if (height.value == "" || height.value <= 0 || height.value < 140) {
+        document.getElementById("sp2").innerHTML = "Enter a valid height";
+        isValid = false;
+        height.style.borderColor = 'red';
+    } else {
+        document.getElementById("sp2").innerHTML = "";
+        height.style.borderColor = 'green';
+    }
+
+    if (!genderValue) {
+        document.getElementById("sp3").innerHTML = "Please select a gender";
+        isValid = false;
+    } else {
+        document.getElementById("sp3").innerHTML = "";
+    }
+
+    if (cups.value == "" || cups.value <= 0) {
+        document.getElementById("sp5").innerHTML = "Enter a valid number of cups";
+        isValid = false;
+        cups.style.borderColor = 'red';
+    } else {
+        document.getElementById("sp5").innerHTML = "";
+        cups.style.borderColor = 'green';
+    }
+
+    if (coffeeType.value == "") {
+        document.getElementById("sp6").innerHTML = "Please select a coffee type";
+        isValid = false;
+        coffeeType.style.borderColor = 'red';
+    } else {
+        document.getElementById("sp6").innerHTML = "";
+        coffeeType.style.borderColor = 'green';
+    }
+
+    if (isValid) {
+        var weightValue = weight.value; 
+        var heightValue = height.value; 
+        var cupsValue = cups.value;
+        var coffeeTypeValue = coffeeType.value;
+
+        var bmi = weightValue / ((heightValue / 100) * (heightValue / 100));
+        var bmiCategory = "";
+        if (bmi < 18.5) {
+            bmiCategory = "Underweight";
+        } else if (bmi >= 18.5 && bmi < 24.9) {
+            bmiCategory = "Normal weight";
+        } else if (bmi >= 25 && bmi < 29.9) {
+            bmiCategory = "Overweight";
+        } else {
+            bmiCategory = "Obese";
+        }
+
+        var caloriesPerCup = 0;
+        if (coffeeTypeValue == "americano") {
+            caloriesPerCup = 3;
+        } else if (coffeeTypeValue == "macchiato") {
+            caloriesPerCup = 15;
+        } else if (coffeeTypeValue == "espresso") {
+            caloriesPerCup = 2;
+        } else if (coffeeTypeValue == "cappuccino") {
+            caloriesPerCup = 70;
+        } else if (coffeeTypeValue == "latte") {
+            caloriesPerCup = 150;
+        } else if (coffeeTypeValue == "mocha") {
+            caloriesPerCup = 250;
+        }
+
+        var totalCalories = cupsValue * caloriesPerCup;
+
+        var tip = "Tip: Stay hydrated and balance coffee with water!";
+        document.getElementById("txt").value =
+            "BMI: " + bmi.toFixed(2) + " (" + bmiCategory + ")\n" +
+            "Calories from Coffee: " + totalCalories + " kcal\n" +
+            tip;
+    }
+}
+
+    </script>
+        
+</body>
+</html>

@@ -1,0 +1,58 @@
+body {
+    background-color: #C89868; 
+}
+header {
+    width: 100%;
+     background-color: #304323;
+}
+.logo {
+    height: 60px;
+    margin-left: 15px;
+}
+.heading {
+    color: #3B3030;
+    font-weight: bold;
+    font-size: 56.3px;
+    font-family: 'Cooper Hewitt', sans-serif;
+    } 
+.websiteName {
+    font-size: 35.5px;
+    font-weight: bold;
+    color: #F8E8D8;
+    margin-right: 28%;
+    font-family: 'League Spartan', sans-serif;
+}
+p {
+    color: #F8E8D8;
+    font-size: 34.7px;
+     text-align: left;
+}
+.navMenu {
+    display: flex;
+    gap: 30px;
+    color: #F8E8D8;
+    align-items:center;
+    font-weight:bold;
+ 
+ }
+.navMenu a {
+    color: #F8E8D8; 
+    text-decoration: none;  
+}
+.navMenu li a:hover {
+    background-color: #486932; 
+    font-size: larger;
+ }
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+#submenu {
+    display: none;
+    position:absolute;
+}
+li:hover > #submenu {
+    background-color: #304323;
+    display: block;
+}
+       

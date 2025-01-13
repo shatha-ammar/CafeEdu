@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="MySheet.css">
+    <header>
+         <nav class="navMenu" >
+            <img src="logo.jpg" alt="Cafe Edu Logo" class="logo">
+            <a class="websiteName">Cafe Edu</a>
+            <ul class="navMenu">
+                <li><a href="HomePage.html">Home</a></li>
+                <li><a href="AboutUs.html">About Us</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+                <li><a href="Courses.html">Courses</a>
+                    <ul id="submenu">
+                        <li><a href="Coffee101.html">Coffee101</a></li>
+                        <li><a href="BrewingMethods.html"> Brewing Methods</a></li>
+                        <li><a href="Espresso.html"> Espresso Machine</a></li>
+                    </ul>
+                </li>
+                <li><a href="SuccessfulStories.html">Success Stories</a></li>
+                <li><a href="ResourceLibrary.html">Resource Library</a></li>
+                <li><a href="cTracker.html">Coffee Tracker</a></li>
+            </ul>
+        </nav>
+     </header>
+     <style> 
+        table{
+            background-color:#304323 ;
+            color: #F8E8D8;
+            border-radius: 30px;
+            margin: 3px;
+             font-weight: bold;
+        }
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+        input[type="submit"],
+        input[type="reset"]{
+            width: 40%;
+            padding: 5px;
+            border-radius: 5px;
+            margin-top: 5px;
+            background-color: #C89868;
+            color: #304323;
+        }
+        input[type="submit"]:hover{
+            background-color: #304323;
+            color: #F8E8D8;
+        }
+        input[type="reset"]:hover{
+            background-color: #304323;
+            color: #F8E8D8;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="date"] {
+            width: 80%;
+            padding: 5px;
+            border-radius: 5px;
+            margin-top: 5px;
+            background-color: #C89868;
+            color: #304323;
+            font-size: smaller;
+        }
+        .coffeeBox, select option {
+            background-color: #C89868;
+            color: #304323;
+            font-size: smaller;
+        }
+        .coffeeBox:hover {
+    background-color: #304323;  
+    color: #F8E8D8;
+}
+
+
+
+     </style>
+</head>
+<body>
+    <h1 class="heading" style="text-align: center;" > Contact us </h1>
+    <form method="post">
+        <table style="margin-left: 32%;"><tr><td>
+            <table style="background-color:#F8E8D8; width:300px; color: #304323;" ><tr><td>  Name <br><input type="text" name="fullName" required></td></tr>
+            <tr><td>  Date of birth<br> <input type="date" name="d1" required></td></tr>
+            <tr><td>  Email<br><input type="text" name="d1" required></td></tr>
+            <tr><td>  Phone number<br> <input type="text" name="fname" required></td></tr>
+            <tr><td>  Preffered method to communicate: <br>
+                <input type="radio" name="r1" value="email" > Email
+                <input type="radio" name="r1" value="phone"> Phone  </td></tr>
+            <tr><td> What's your coffee level? <select name="coffeeLevel" class="coffeeBox">
+                <option value="b" selected>Beginner</option>
+                <option value="p">Coffee Pro</option>
+                <option value="e">Coffee Explorer</option>
+            </select></td></tr>
+            <tr><td><input type="submit" value="Submit">
+            <input type="Reset"></tr></td></table>
+
+      <td><table style="background-color: #304323; text-align: left; width:300px" class="navMenu">
+        <tr><td>  <h1 style="text-align: center;">Info</h1> </td></tr>
+        <tr><td><img src="gmail.jpg" alt="logo1"style="width: 20px;">   hello.cafeedu@gmail.com </td></tr>
+        <tr><td ><img src="insta.jpg" alt="logo2"style="width: 20px;" >  <a href="https://www.instagram.com/brewwithcafeedu?igsh=a3ptZjFla3JmaWhq" target="_blank"> BrewWithCafeEdu </a></td></tr>
+        <tr><td><img src="facebook.jpg" alt="logo3"style="width: 20px;">  <a href="https://www.facebook.com/share/15ZWN9QDiw/?mibextid=LQQJ4d" target="_blank">Cafe Edu</a> </td></tr>
+        <tr><td><img src="phone.jpg" alt="logo4"style="width: 20px;">  0790135856 </td></tr>
+        <tr><td style="color: #C89868;"><br>Got a coffee question or in the mood for a fun chat? Drop us a message and let's brew some laughs! 😄
+        <br><br><br></td></tr></table></td>
+    </td></tr></table>
+    </form>
+</body>
+</html>
